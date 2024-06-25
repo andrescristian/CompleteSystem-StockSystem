@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--evitar ataques de Cross Site Scripting (injeção de dados)-->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+  <title>Cadastro de Fornecedores</title>
+
+</head>
+
+<body class="fundo text-light">
+
+  <div class="col-md-4">
+
+  </div>
+
+  <!-- <hr class="border border-primary border-1 opacity-75"> -->
+
+
+  <form id="formCadastros" class="container mt-3 rounded ">
+
+    <div class="row mt-3">
+      <div class="col-7"></div>
+      <div class="col-5">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-4 d-flex mt-5" id="buscar">
+        <input type="text" class="form-control col-12" id="inputSearch" spellcheck="false" autofocus>
+        <button type="button" class="btn ms-2 " id="btnRead" onclick="pesquisarCliente()">Buscar</button>
+        <br>
+      </div>
+
+    </div>
+
+
+    <div class="row mt-5">
+      <div class="col-4 d-flex mt-4">
+        <input type="text" class="form-control" id="idClient" placeholder="ID" maxlength="30" disabled>
+        <br>
+      </div>
+      <div class="col-2">
+
+      </div>
+      <div class="col-6 d-flex">
+        <h1 class="text-center" id="titulo">Cadastro de Fornecedores</h1>
+      </div>
+
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4">
+        <label for="">Razão social</label>
+        <input type="text" placeholder="" id="formFornecedor" class="form-control" required spellcheck="false">
+      </div>
+      <div class="col-3">
+        <label for="">Telefone</label>
+        <input type="text" placeholder="" id="formTelefone" class="form-control" spellcheck="false" maxlength="11" required>
+      </div>
+      <div class="col-1">
+
+      </div>
+      <div class="col-2">
+        <img src="../public/img/relacao.png" alt="" id="imagemform">
+
+      </div>
+    </div>
+
+
+
+    <div class="row mt-3">
+      <div class="col-3">
+        <label for="">E-mail</label>
+        <input type="email" required placeholder="" id="formEmail" class="form-control" spellcheck="false">
+      </div>
+
+      <div class="col-3">
+        <label for="">CNPJ</label> <!-- Mudar para CNPJ -->
+
+        <input type="text" required id="formCnpj" class="form-control" maxlength="14"
+          onkeyup="document.getElementById('validation').innerHTML = validaCNPJ(this.value)" spellcheck="false">
+        <div><b>Resultado:</b><img id="validation"></div>
+      </div>
+
+      <div class="col-2">
+        <label for="">Inscrição Estadual</label>
+        <input class="form-control" type="text" id="formInscricao">
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row mt-3">
+      <div class="col-2">
+        <label for="">CEP</label>
+        <input type="text" id="formCep" maxlength="9" onblur="buscarEndereco()" class="form-control" spellcheck="false">
+      </div>
+
+      <div class="col-4">
+        <label for="">Logradouro</label>
+        <input type="text" id="formLogradouro" class="form-control" spellcheck="false">
+      </div>
+
+      <div class="col-2">
+        <label for="">Número</label>
+        <input type="text" id="formNumero" class="form-control" spellcheck="false">
+      </div>
+
+      <div class="col-3">
+        <label for="">Bairro</label>
+        <input type="text" id="formBairro" class="form-control" spellcheck="false">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-2">
+        <label for="">UF</label>
+        <select name="uf" id="formUf" class="form-select">
+
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP" selected>SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO </option>
+          <option value="DF">DF</option>
+        </select>
+      </div>
+
+      <div class="col-2">
+        <label for="">Cidade</label>
+        <input type="text" id="formCidade" class="form-control" spellcheck="false">
+      </div>
+      <div class="col-3">
+        <label for="">Complemento</label>
+        <input type="text" id="formComplemento" class="form-control" spellcheck="false">
+      </div>
+
+      <div class="col-3">
+        <label for="">Site</label>
+        <input class="form-control" type="text" id="formSite">
+      </div>
+      <div class="col-2 mt-2">
+        <button class="btn btn-dark mt-3" type="button" onclick="acessarSite()">Acessar site</button>
+      </div>
+
+    </div>
+
+    <div class="row">
+     
+    </div>
+
+
+    <div class="justify-content-center d-flex mt-4">
+      <input type="submit" value="Salvar" class="mt-3 btn btn-dark btn-lg ms-3 mb-3" id="btnSalvar">
+      <button type="button" class="btn  btn-lg mt-3 ms-3 mb-3" id="btnUpdate" onclick="editarCliente()">
+        Editar
+      </button>
+      <button type="button" onclick="excluirCliente()" class="btn  btn-lg mt-3 ms-3 mb-3" id="btnDelete">
+        Excluir
+      </button>
+      <button type="reset" class="btn btn-lg mt-3 ms-3 mb-3" id="btnReset" onclick="clean()">Limpar</button>
+    </div>
+  </form>
+
+  <!--</main>--->
+
+  <script src="../views/validacao.js"></script>
+  <script src="../public/js/janela3fornecedores/renderer.js"></script>
+  <script src="../public/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

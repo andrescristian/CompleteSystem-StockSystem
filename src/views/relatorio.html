@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--evitar ataques de Cross Site Scripting (injeção de dados)-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <title>Relatório de Fornecedores</title>
+</head>
+<body class="fundo">
+    <h1 class="text-center mt-5 m-3" id="titulo">Relatório de Fornecedores</h1>
+    <main class="container ">
+        <div class="table-responsive mt-4">
+        <table class="table table-primary mt-4" id="formCadastros">
+            <thead>
+                <tr>
+                    <th>Fornecedor</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>CEP</th>
+                    <th>Logradouro</th>
+                    <th>Número</th>
+                    <th>Complemento</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>UF</th>
+                    <th>CNPJ</th>
+                    <th>Site</th>
+                    <th>Inscrição</th>
+                </tr>
+            </thead>
+            <tbody id="listaCadastros">
+
+            </tbody>
+        </table>
+    </div>
+</main>
+    <script src="../public/js/janela4fornecedores/renderer.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+</body>
+</html>
