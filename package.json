@@ -11,6 +11,6 @@
   "scripts": {
     "start": "electron ."
   },
-  "author": "Andres e Edinaldo",
+  "author": "Andres, Erica, Julia e Edinaldo",
   "license": "MIT"
 }
