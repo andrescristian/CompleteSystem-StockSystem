@@ -1,12 +1,8 @@
-
-//importando biblioteca usando require
 const mongoose = require('mongoose');
 const cadastros = require('./src/models/Cadastros');
 
-
 let url = ""
 const conectar = async () => {
-
 try {
     await mongoose.connect(url);
     console.log("MongoDB Conectado.")
@@ -30,6 +26,4 @@ const desconectar = async () => {
   }
 }
 
-
-//exportar o modulo -> main.js
 module.exports = {conectar, desconectar}
