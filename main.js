@@ -477,7 +477,6 @@ ipcMain.on('search-produto', async (event, codigo) => {
             event.reply('clear-search')
           }
         })
-  
       } else {
         event.reply('produto-data', JSON.stringify(dadosProdutos))
       }
@@ -514,7 +513,6 @@ ipcMain.on('update-task', async (event, cliente) => {
             bairro: cliente.bairro,
             cidade: cliente.cidade,
             uf: cliente.uf
-
         },
             {
                 new: true
@@ -547,34 +545,27 @@ ipcMain.on('update-client', async (event, cliente) => {
         complemento: cliente.complemento,
         cidade: cliente.cidade,
         uf: cliente.uf
-
     },
         {
             new: true
         }
     )
-    //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
+    
     dialog.showMessageBox(winAbout, {
         type: 'info',
         message: "Dados do Cliente alterado com sucesso",
         buttons: ['OK']
     }).then((result) => {
-        //verificar se o botão ok foi preenchido
         if (result.response === 0) {
             event.reply('update-success', JSON.stringify(clienteEditado))
         } else {
-            //limpar a caixa de busca 
             event.reply('clear-search')
         }
     })
 })
 
-
-//----------------------------------------------EDITAR PRODUTO-----------------------------------------
-
 ipcMain.on('update-produto', async (event, produto) => {
-    await console.log(produto) // teste de recebimento do renderer
-    //passo 3: salvar as alterações no banco de dados 17/04/2024
+    await console.log(produto)
     const produtoEditado = await Produto.findByIdAndUpdate(
         produto.id, {
         empresa: produto.empresa,
@@ -590,7 +581,6 @@ ipcMain.on('update-produto', async (event, produto) => {
             new: true
         }
     )
-        //Campos obrigatórios
         if (produto.produto === "") {
             dialog.showMessageBox(produtos, {
                 type: "info",
@@ -603,7 +593,6 @@ ipcMain.on('update-produto', async (event, produto) => {
                 message: 'Preencha o telefone da empresa',
                 buttons: ['ok']
             })
-   
         }  else if (produto.estoque === ""){
             dialog.showMessageBox(produtos, {
                 type: "info",
@@ -612,28 +601,22 @@ ipcMain.on('update-produto', async (event, produto) => {
             })
         }
          else {
-    //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
     dialog.showMessageBox(produtos, {
         type: 'info',
         message: "Dados do produto alterado com sucesso",
         buttons: ['OK']
     }).then((result) => {
-        //verificar se o botão ok foi preenchido
         if (result.response === 0) {
             event.reply('udpate-produto-success')
         } else {
-            //limpar a caixa de busca
             event.reply('clear-search')
         }
     })
 }
 })
 
-//Excluir um cliente  - CRUD delete
-
 ipcMain.on('excluir-client', async (event, cliente) => {
-    await console.log(cliente) // teste de recebimento do renderer
-    //passo 3: salvar as alterações no banco de dados 17/04/2024
+    await console.log(cliente)
     const clienteEditado = await Cadastros.findByIdAndDelete(
         cliente.id, {
         nome: cliente.nome,
@@ -646,41 +629,31 @@ ipcMain.on('excluir-client', async (event, cliente) => {
         complemento: cliente.complemento,
         cidade: cliente.cidade,
         uf: cliente.uf
-
     },
         {
             new: true
         }
     )
-    //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
+    
     dialog.showMessageBox(winAbout, {
         type: 'warning',
         buttons: ['Cancelar', 'Excluir'],
         title: 'Confirmação de exclusão',
         message: 'Tem certeza que deseja excluir este cliente?'
     }).then((result) => {
-        //verificar se o botão ok foi preenchido
         if (result.response === 1) {
             event.reply('excluir-success')
             dialog.showMessageBox(winAbout, {
                 type: 'info',
                 title: 'CONEST',
                 message: 'Cliente excluido com sucesso',
-                buttons: ['OK']
-                
+                buttons: ['OK']  
             })
         } else {
-            //limpar a caixa de busca 
-            event.reply('clear-search')
-            
+            event.reply('clear-search')            
         }
     })
 })
-
-
-//------------------------excluir produto----------------------------------
-
-//Excluir um cliente  - CRUD delete
 
 ipcMain.on('excluir-produto', async (event, produto) => {
     await console.log(produto) // teste de recebimento do renderer
@@ -695,20 +668,18 @@ ipcMain.on('excluir-produto', async (event, produto) => {
       lucro: produto.lucro,
       preco: produto.lucro,
       resultado: produto.resultado
-  
     },
       {
         new: true
       }
     )
-    //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
+    
     dialog.showMessageBox(produtos, {
       type: 'warning',
       buttons: ['Cancelar', 'Excluir'],
       title: 'Confirmação de exclusão',
       message: 'Tem certeza que deseja excluir este Produto?'
     }).then((result) => {
-      //verificar se o botão ok foi preenchido
       if (result.response === 1) {
         event.reply('excluir-success-produto')
         dialog.showMessageBox(produtos, {
@@ -716,21 +687,15 @@ ipcMain.on('excluir-produto', async (event, produto) => {
             title: 'CONEST',
             message: 'Produto excluido com sucesso',
             buttons: ['OK']
-            
         })
       } else {
-        //limpar a caixa de busca 
         event.reply('clear-search')
       }
     })
   })
-  
-/* Criando a parte dos Fornecedores */
 
 ipcMain.on('new-task-fornecedores', async (event, args) => {
-    console.log(args) // teste de recebimento
-    // Salvar no banco de dados os dados do formulario
-    // validação dos campos obrigatorios
+    console.log(args)
     if (args.fornecedor === "") {
         dialog.showMessageBox(winFornecedores, {
             type: "info",
@@ -748,8 +713,6 @@ ipcMain.on('new-task-fornecedores', async (event, args) => {
         const novoFornecedor = new Fornecedores(args)
         await novoFornecedor.save()
 
-        //enviar uma confirmação para o renderer(front-end) - passo 4
-        //passando a nova tarefa no formato JSON (Passo extra CRUD READ)
         event.reply('new-task-created-fornecedores', JSON.stringify(novoFornecedor))
         dialog.showMessageBox(winFornecedores, {
             type: 'info',
@@ -758,73 +721,56 @@ ipcMain.on('new-task-fornecedores', async (event, args) => {
             buttons: ['OK']
         })
     }
-
 })
 
-
 ipcMain.on('get-tasks-fornecedores', async (event, args) => {
-    const fornecedoresPendentes = await Fornecedores.find() //.find faz a busca e como o "select no mysql"
-    console.log(fornecedoresPendentes) //passo 2 fins didaticos (teste)
-    //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
-    event.reply('pending-tasks-fornecedores', JSON.stringify(fornecedoresPendentes))//JSON.stringify converte para o JSON
+    const fornecedoresPendentes = await Fornecedores.find()
+    console.log(fornecedoresPendentes)
+    event.reply('pending-tasks-fornecedores', JSON.stringify(fornecedoresPendentes))
 })
 
 ipcMain.on('delete-task-fornecedores', async (event, args) => {
-    console.log(args) // teste de recebimentodo id (passo 2 slide)
-    //exibir uma caixa de dialogo para confirma a exclusão
+    console.log(args)
     const { response } = await dialog.showMessageBox(win, {
         type: 'warning',
         buttons: ['Cancelar', 'Excluir'],
         title: 'Confirmação de exclusão',
         message: 'Tem certeza que deseja excluir este fornecedor?'
     })
-    console.log(response)// Apoio a Logica
-
-    //passo 3 excluir a tarefa do banco e enviar uma resposta para o renderer
+    console.log(response)
     if (response === 1) {
         const fornecedorExcluido = await Fornecedores.findByIdAndDelete(args)
-        //passo 3 excluir a tarefa do banco e enviar uma resposta para o renderer atualizar a lista de tarefas pendentes
         event.reply('delete-task-success-fornecedores', JSON.stringify(fornecedorExcluido))
-
     }
 })
 
-
 ipcMain.on('search-client-fornecedores', async (event, nome) => {
-    console.log(nome) //teste do passo 3
-    //passo 4 - buscar o nome no banco de dados
+    console.log(nome)
     try {
         const dadosFornecedor = await Fornecedores.find({
-            fornecedor: new RegExp(nome, 'i') //i ignore(letras maiuscula/minuscula)    
+            fornecedor: new RegExp(nome, 'i')   
         })
-        console.log(dadosFornecedor) //teste passo 4
-        //validação (se não existir o cliente informar o usuario)
+        console.log(dadosFornecedor)
         if (dadosFornecedor.length === 0) {
             dialog.showMessageBox(winFornecedores, {
                 type: 'question',
                 message: 'Fornecedor não cadastrado.\nDeseja cadastrar este fornecedor?',
                 buttons: ['Sim', 'Não']
             }).then((result) => {
-                //verifica o botão pressionado (Sim = 0)
-                // console.log(result)
                 if (result.response === 0) {
-                    //setar o nome na caixa input
                     event.reply('set-name-fornecedores')
                 } else {
-                    //limpar a caixa input de busca
                     event.reply('clear-search-fornecedores')
                 }
             })
 
         } else {
-            // se existir o cliente pesquisado, enviar os dados para o renderer (passo 5)
             event.reply('client-data-fornecedores', JSON.stringify(dadosFornecedor))
         }
     } catch (error) {
         console.log(error)
     }
 })
-
 
 ipcMain.on('search-alert-fornecedores', (event) => {
     dialog.showMessageBox(winFornecedores, {
@@ -835,34 +781,28 @@ ipcMain.on('search-alert-fornecedores', (event) => {
     event.reply('search-focus-fornecedores')
 })
 
-
-
-
 ipcMain.on('update-client-fornecedores', async (event, cliente) => {
-    await console.log(cliente) // teste de recebimento do renderer
-    //passo 3: salvar as alterações no banco de dados 17/04/2024
+    await console.log(cliente)
     const fornecedorEditado = await Fornecedores.findByIdAndUpdate(
         cliente.id, {
         fornecedor: cliente.fornecedor,
         fone: cliente.fone,
         email: cliente.email,
-        cnpj: cliente.cnpj,       //Trocar CPF pelo CNPJ
+        cnpj: cliente.cnpj,
         cep: cliente.cep,
         logradouro: cliente.logradouro,
         numero: cliente.numero,
-        complemento: cliente.complemento,       //Adicionar mais campos, inscrição estadual, site, CNPJ
+        complemento: cliente.complemento,
         cidade: cliente.cidade,
         uf: cliente.uf,
         site: cliente.site,
         inscricao: cliente.inscricao
-
     },
         {
             new: true
         }
     )
 
-    //Campos obrigatórios
     if (cliente.fornecedor === "") {
         dialog.showMessageBox(winFornecedores, {
             type: "info",
@@ -908,17 +848,14 @@ ipcMain.on('update-client-fornecedores', async (event, cliente) => {
         })
     }
      else {
-        //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
     dialog.showMessageBox(winFornecedores, {
         type: 'info',
         message: "Dados do Fornecedor alterado com sucesso",
         buttons: ['OK']
     }).then((result) => {
-        //verificar se o botão ok foi preenchido
         if (result.response === 0) {
             event.reply('update-success-fornecedores')
         } else {
-            //limpar a caixa de busca 
             event.reply('clear-search-fornecedores')
         }
     })
@@ -926,11 +863,8 @@ ipcMain.on('update-client-fornecedores', async (event, cliente) => {
     
 })
 
-
-//excluir-client == excluir-fornecedor
 ipcMain.on('excluir-fornecedor', async (event, cliente) => {
-    await console.log(cliente) // teste de recebimento do renderer
-    //passo 3: salvar as alterações no banco de dados 17/04/2024
+    await console.log(cliente)
     const fornecedorEditado = await Fornecedores.findByIdAndDelete(
         cliente.id, {
         fornecedor: cliente.fornecedor,
@@ -945,20 +879,17 @@ ipcMain.on('excluir-fornecedor', async (event, cliente) => {
         uf: cliente.uf,
         site: cliente.site,
         inscricao: cliente.inscricao
-
     },
         {
             new: true
         }
     )
-    //passo 4 confimar a exclusão e enviar ao renderer um pedido para limpar os campos  e setar os botões
     dialog.showMessageBox(winFornecedores, {
         type: 'warning',
         buttons: ['Cancelar', 'Excluir'],
         title: 'Confirmação de exclusão',
         message: 'Tem certeza que deseja excluir este fornecedor?'
     }).then((result) => {
-        //verificar se o botão ok foi preenchido
         if (result.response === 1) {
             event.reply('excluir-success-fornecedores')
             dialog.showMessageBox(winFornecedores, {
@@ -966,27 +897,19 @@ ipcMain.on('excluir-fornecedor', async (event, cliente) => {
                 title: 'CONEST',
                 message: 'Fornecedor excluido com sucesso',
                 buttons: ['OK']
-                
             })
         } else {
-            //limpar a caixa de busca 
             event.reply('clear-search-fornecedores')
         }
     })
 })
 
-
-//Aula 06/05, depois do renderer.js
 ipcMain.on('url-site', (event, site) =>{
     let url = site.url
     console.log(url)
     shell.openExternal(url)
 })
 
-
-//codigo de barras 10/05/2024
-// Receber barcode //codigo de barra 10/05/2024
 ipcMain.on('search-barcode', (event, barcode) => {
     console.log(barcode)
   })
-  
