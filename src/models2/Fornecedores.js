@@ -1,6 +1,5 @@
 const {model, Schema} = require('mongoose')
 
-//Criar um Schema de Fornecedores
 const fornecedoresSchema =  new Schema({
     fornecedor:{
       type: String
@@ -44,5 +43,4 @@ const fornecedoresSchema =  new Schema({
     }
   })
 
-//Exportar o Schema de Fornecedores
 module.exports = model('Fornecedores', fornecedoresSchema)
