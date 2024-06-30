@@ -13,7 +13,8 @@ function clean() {
     document.getElementById("inputSearch").focus()
 }
 
-let  formulario, formNome, formTelefone, formEmail, formCep, formLogradouro, formBairro, formCidade, formUf, formCpf, formNumero, formComplemento,  lista, idCliente
+let formulario, formNome, formTelefone, formEmail, formCep, formLogradouro, formBairro,
+formCidade, formUf, formCpf, formNumero, formComplemento,  lista, idCliente
 formulario = document.querySelector("#formCadastros")
 idCliente = document.querySelector('#idClient')
 formNome = document.querySelector("#formNome")
