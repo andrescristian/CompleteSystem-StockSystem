@@ -1,8 +1,5 @@
 const {model, Schema } =  require ('mongoose')
 
-
-//vamos criar um obejto -> modelo para coleção
-//Parte importante:
 const cadastrosSchema =  new Schema({
     nome:{
       type: String
@@ -39,6 +36,4 @@ const cadastrosSchema =  new Schema({
     }
   })
 
-  //exportar o Schema -> main 
 module.exports = model('Cadastros', cadastrosSchema)
-
