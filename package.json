@@ -4,9 +4,9 @@
     "init": "^0.1.2",
     "mongoose": "^8.2.4"
   },
-  "name": "cadastro",
+  "name": "Controle de Estoque",
   "version": "1.0.0",
-  "description": "Sistema de Cadastro de Clientes",
+  "description": "Sistema completo para controle de estoque de roupas",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
