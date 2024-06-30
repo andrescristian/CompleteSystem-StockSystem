@@ -1,36 +1,177 @@
-
-
-.card{
-    width: 220px;
-    height: 450px;
-    background-color: rgb(207, 233, 255);
-    
+#idClient {
+    display: none;
 }
 
-.card:hover{
+#titulo {
+    color: rgb(207, 233, 255);
+    background: linear-gradient(45deg, #cfe9ff,#b9deff, #4b7ca7, #fff);
+    background-size: 400% 100%;
+    animation-delay: 2s;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: degradeh1 30s linear infinite alternate;
+}
+
+@keyframes degradeh1 {
+    0% {
+      background-position-x: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+}
+
+main {
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+p {
+    font-weight: 500;
+    font-size: 22;
+}
+
+.card {
+    width: 220px;
+    height: 450px;
+    background-color: rgb(207, 233, 255);    
+}
+
+.card:hover {
     transform: scale(1.1);
     transition: all 0.5s;
 }
-.card-body{
+
+.card-body {
     align-items: center;
     text-align: center;
 }
 
-
-main{
-    text-align: center;
-    align-items: center;
-}
-
-
-#imagemclientes{
+#imagemclientes {
     margin-top: 30px;
     margin-bottom: 30px;
     width: 140px;
 }
 
+#botoes {
+    margin-top: 24px;
+}
 
-footer{
+button {
+    border-radius: 10px;
+    padding: 6px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+button a {
+    list-style-type: none;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#buscar button {
+    background-color: #cc6f23;
+    color: #fff;
+}
+
+#btnReset {
+    background-color: #4b7ca7;
+}
+
+#btnDelete {
+    background-color: #e2ab2d;
+}
+
+#btnSalvar {
+    background-color: #006c8d;
+}
+
+#btnUpdate {
+    background-color: #2d75e2;
+}
+
+.botaoamarelo {
+    background-color: #e2ab2d;
+    border:#e2ab2d;    
+}
+
+.botaoamarelo .card-link {
+    color: #fcefd1;
+}
+
+.botaoazul {
+    background-color: #003ca6;
+    border: #003ca6;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.botaoazul .card-link {
+    color: #d2e2ff;
+}
+
+.row {
+    margin-top: 35px;
+}
+
+.fundo {
+    background-color: rgb(14, 41, 68);
+}
+
+.logo {
+    width: 50px;
+}
+
+#imagemform {
+    width: 160px;
+    float: left;
+    position: absolute;
+    right: 190px;
+    top: 210px;
+}
+
+#cpfVerificado {
+    width: 35px;
+    position: absolute;
+    right: 510px;
+    transform: rotate(10deg);
+}
+
+.table-responsive>.fixed-column {
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border-right: 1px solid #ddd;
+}
+
+.table > thead > tr > th {
+  background-color: #4c94bd;
+  color: #fff;
+}
+
+.horizontal-section {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+  
+.app-icon {
+    scroll-snap-align: start;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+footer {
     background-color:  rgb(31, 31, 31);
     width: 100%;
     height: 50px;
@@ -43,240 +184,8 @@ footer{
     bottom: 0;
 }
 
-
-
-#botoes{
-    margin-top: 24px;
-
-    
-    
-
-}
-
-button:hover{
-    transform: scale(1.1);
-    transition: all 0.5s;
-}
-
-
-
-button{
-    border-radius: 10px;
-    padding: 6px;
-}
-
-
-.row{
-    margin-top: 35px;
-}
-
-main{
-    margin-top: 20px;
-}
-
-
-
-button a{
-    list-style-type: none;
-    text-decoration: none;
-    font-weight: bold;
-    
-}
-
-.botaoamarelo{
-    background-color: #e2ab2d;
-    border:#e2ab2d;
- 
-  
-    
-    
-}
-
-.botaoamarelo .card-link{
-    color: #fcefd1;
-}
-
-.botaoazul{
-    background-color: #003ca6;
-    border: #003ca6;
-    margin-right: 10px;
-    margin-left: 10px;
- 
-
-}
-
-.botaoazul .card-link{
-    color: #d2e2ff;
-}
-
-
-
-.fundo{
-    background-color: rgb(14, 41, 68);
-}
-
-
-
-.logo{
-    width: 50px;
-}
-
-
-#titulo{
-    color:  rgb(207, 233, 255);
-    background: linear-gradient(45deg, #cfe9ff,#b9deff, #4b7ca7, #fff);
-    background-size: 400% 100%;
-    animation: degradeh1 30s linear infinite alternate;
-    animation-delay: 2s;
-  
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-@keyframes degradeh1 {
-    0% {
-      background-position-x: 0%;
-    }
-  
-    100% {
-      background-position: 400%;
-    }
-  }
-
-
-
-p{
-    font-weight: 500;
-    font-size: 22;
-}
-
-
-#imagemform{
-    width: 160px;
-    float: left;
-    position: absolute;
-    right: 190px;
-    top: 210px;
-
-
-}
-
-#buscar button{
-    background-color: #cc6f23;
-    color: #fff;
-}
-
-
-#btnReset{
-    background-color: #4b7ca7;
-
-}
-
-#btnDelete{
-    background-color: #e2ab2d;
-}
-
-#btnSalvar{
-    background-color: #006c8d;
-}
-
-#btnUpdate{
-    background-color: #2d75e2;
-
-}
-
-#cpfVerificado{
-    width: 35px;
-    position: absolute;
-    right: 510px;
-    transform: rotate(10deg);
-}
-
-
-
-.table-responsive>.fixed-column {
-    position: absolute;
-    display: inline-block;
-    width: auto;
-    height: auto;
-    border-right: 1px solid #ddd;
-}
-.table > thead > tr > th {
-  background-color: #4c94bd;
-  color: #fff;
-}
-@media(min-width:768px) {
+@media (min-width:768px) {
     .table-responsive>.fixed-column {
         display: none;
     }
-}
-
-
-.horizontal-section {
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-  }
-  
-  .app-icon {
-    scroll-snap-align: start;
-  }
-#idClient {
-    display: none;
-}
-
-/*
-
-#btnReset {
-    width: 50px;
-    height: 50px;
-    background-image: url('../img/clear.png');
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-    margin-left: 30px;
-}
-
-.Button img{
-    margin: 25px;
-    padding: 5px;
-    border: 1px solid #e8e8e8;
-    cursor: pointer;
-}
-
-
-footer{
-    background-color: #292a2d;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff;
-    padding: 3px 14px 1px 16px;
-    position: fixed;
-    bottom: 0;
-}
-
-
-th{
-    transition-property: background-color;
-    transition-duration: 1.2s;
-}
-th:hover{
-    background-color: rgb(17, 85, 210);
-}
-
-*/
-
-
-/* 
-input:hover{
-    box-shadow: 9px 9px 9px rgba(0, 0, 0, 0.3);
-}*/
-
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
