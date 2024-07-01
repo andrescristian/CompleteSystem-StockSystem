@@ -4,45 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--evitar ataques de Cross Site Scripting (injeção de dados)-->
   <link rel="stylesheet" href="../public/css/style.css">
   <link rel="stylesheet" href="../public/css/bootstrap.min.css">
   <title>Cadastro de Clientes</title>
-
 </head>
 
-<body class="fundo text-light" >
+<body class="fundo text-light">
 
-  <div class="col-md-4">
-
-  </div>
-
-  <!-- <hr class="border border-primary border-1 opacity-75"> -->
-
-
-  <form id="formCadastros" class="container mt-3 rounded ">
-
+<div class="col-md-4">
+</div>
+  
+<form id="formCadastros" class="container mt-3 rounded ">
     <div class="row mt-3">
-      <div class="col-7"></div>
+      <div class="col-7">
+      </div>
       <div class="col-5">
-        
       </div>
     </div>
 
     <div class="row">
-
       <div class="col-4 d-flex mt-5" id="buscar">
         <input type="text" class="form-control col-12" id="inputSearch" spellcheck="false" autofocus>
         <button type="button" class="btn ms-2 " id="btnRead" onclick="pesquisarCliente()" >Buscar</button>
         <br>
       </div>
-
     </div>
 
     <div class="col-4">
-
     </div>
-
 
     <div class="row mt-5">
     <div class="col-4 d-flex mt-4">
@@ -70,19 +59,18 @@
       <div class="col-1">
 
       </div>
+      
       <div class="col-2">
         <img src="../public/img/discussao (1).png" alt="" id="imagemform">
-
       </div>
     </div>
-
-
 
     <div class="row mt-3">
       <div class="col-md-3">
         <label for="">E-mail</label>
         <input type="email" required id="formEmail" class="form-control" spellcheck="false">
       </div>
+      
       <div class="col-md-3">
         <label for="">CPF</label>
         <input type="text" required id="formCpf" class="form-control" onblur="verificaCPF()" spellcheck="false" maxlength="11">
@@ -90,11 +78,8 @@
 
       <div class="col-3 ">
         <img src="../public/img/erro.png" alt="CPF invalido" id="cpfVerificado" class="col-md-1 img-fluid mt-3">
-
       </div>
- 
     </div>
-    <!-- <img src="../public/img/erro.png" alt="CPF invalido" id="cpfVerificado" class="col-md-1 img-fluid"> -->
 
     <div class="row mt-3">
       <div class="col-2">
@@ -118,11 +103,10 @@
       </div>
     </div>
 
-    <div class="row mt-3">
-      <div class="col-2">
-        <label for="">UF</label>
-        <select name="uf" id="formUf" class="form-select">
-
+  <div class="row mt-3">
+    <div class="col-2">
+      <label for="">UF</label>
+      <select name="uf" id="formUf" class="form-select">
           <option value="AC">AC</option>
           <option value="AL">AL</option>
           <option value="AP">AP</option>
@@ -151,31 +135,25 @@
           <option value="TO">TO </option>
           <option value="DF">DF</option>
         </select>
-      </div>
+    </div>
 
-      <div class="col-3">
+    <div class="col-3">
         <label for="">Cidade</label>
         <input type="text" id="formCidade" class="form-control" spellcheck="false">
-      </div>
-      <div class="col-5">
-        <label for="">Complemento</label>
-        <input type="text" id="formComplemento" class="form-control" spellcheck="false">
-      </div>
     </div>
+    <div class="col-5">
+      <label for="">Complemento</label>
+      <input type="text" id="formComplemento" class="form-control" spellcheck="false">
+    </div>
+  </div>
 
-    <div class="justify-content-center d-flex mt-4">
+  <div class="justify-content-center d-flex mt-4">
       <input type="submit" value="Salvar" class="mt-3 btn btn-dark btn-lg ms-3 mb-3" id="btnSalvar">
-      <button type="button" class="btn btn-lg mt-3 ms-3 mb-3" id="btnUpdate" onclick="editarCliente()">
-        Editar
-      </button>
-      <button type="button" onclick="excluirCliente()" class="btn btn-lg mt-3 ms-3 mb-3" id="btnDelete">
-        Excluir
-      </button>
+      <button type="button" class="btn btn-lg mt-3 ms-3 mb-3" id="btnUpdate" onclick="editarCliente()">Editar</button>
+      <button type="button" onclick="excluirCliente()" class="btn btn-lg mt-3 ms-3 mb-3" id="btnDelete">Excluir</button>
       <button type="reset" class="btn btn-lg mt-3 ms-3 mb-3" id="btnReset" onclick="clean()">Limpar</button>
-    </div>
-  </form>
-
-  <!--</main>--->
+  </div>
+</form>
 
   <script src="../public/js/janela1/renderer.js"></script>
   <script src="../views/validacao.js"></script>
