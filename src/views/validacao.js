@@ -33,12 +33,10 @@ function validaCNPJ(cnpj) {
         return document.getElementById("validation").src = "../public/img/errado.png"
 
     return document.getElementById("validation").src = "../public/img/corretoa.png"
-
 }
 
 
 document.getElementById('cpfVerificado').src = "../public/img/erro.png"
-
 
 const { dialog } = require('electron/main')
 
@@ -48,7 +46,8 @@ function verificaCPF() {
 
     cpf = document.getElementById("formCpf").value
 
-    if (cpf.length !== 11 || cpf === "00000000000" || cpf === "11111111111" || cpf === "22222222222" || cpf === "33333333333" || cpf === "44444444444" || cpf === "55555555555" || cpf === "66666666666" || cpf === "77777777777" || cpf === "88888888888" || cpf === "99999999999") {
+    if (cpf.length !== 11 || cpf === "00000000000" || cpf === "11111111111" || cpf === "22222222222" || cpf === "33333333333" || cpf === "44444444444" ||
+        cpf === "55555555555" || cpf === "66666666666" || cpf === "77777777777" || cpf === "88888888888" || cpf === "99999999999") {
         console.log("CPF inválido")
     } else {
         //Cálculo do primeiro dígito verificador
@@ -85,12 +84,10 @@ function verificaCPF() {
         } else {
             document.getElementById('cpfVerificado').src = "../public/img/correto.png"
             console.log("CPF válido")
-
         }
     }
     document.getElementById('formCpf').addEventListener('blur', verificaCPF);
 }
-
 
 function calcularMargemLucro() {
     const custo = parseFloat(document.getElementById('formValor').value);
